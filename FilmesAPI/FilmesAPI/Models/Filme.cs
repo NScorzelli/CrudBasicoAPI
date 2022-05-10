@@ -8,16 +8,15 @@ namespace FilmesAPI.Models
 {
     public class Filme
     {
-        [Key]
+
+        [Key][Required]
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "O título é obrigatório.")]
-        [StringLength(30, ErrorMessage = "O tamanho do título deve ser inferior a 30 caracteres.")]
+        [Required(ErrorMessage ="O campo título é obrigatório.")][StringLength(30, ErrorMessage = "O título deve possuir 30 caracteres ou menos.")]
         public string Titulo { get; set; }
-        public string Diretor { get; set; }
         public string Genero { get; set; }
-
-        [Range(1,600, ErrorMessage = "A duração do filme deve ser entre 1 minuto e 600 minutos.")]
+        public string Diretor { get; set; }
+        [Required][Range(1,600,ErrorMessage = "A duração em minutos de um filme deve estar entre 1 e 600 minutos.")]
         public int Duracao { get; set; }
+
     }
 }
